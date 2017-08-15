@@ -1,0 +1,182 @@
+body{
+  background:url("http://previews.123rf.com/images/boyusya/boyusya1408/boyusya140800014/30645562-riccio-nuvole-pattern-pattern-Seamless-vector-doodle-con-nuvole-carino-e-la-pioggia-Archivio-Fotografico.jpg") repeat;
+  
+  background-attachment:fixed;
+}
+/*Setting the properties for the "Get Weather Information" button*/
+button{
+  position:absolute;
+  left:32%;
+  background-color:#FF790E;
+  margin-top:5%;
+}
+/*The use of the star(*) selector is used to select all elements and apply a properties*/
+* {
+    box-sizing: border-box;
+}
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+[class*="col-"] {
+    float:left;
+    padding: 2%;
+}
+/* This sets the font for the entire web page*/
+html {
+    font-family: "Helvetica neue", Helvetica;
+}
+/*Setting the format for the sections containing the data*/
+#Time{
+  font-size:2.3rem;
+  padding:0%;
+  margin:0%;
+}
+#dayDate{
+  font-size:3rem;
+  padding:0%;
+  margin:0%;
+}
+#ActTemp{
+  font-size:8rem;
+}
+#weather{
+  font-size:4.5rem;
+}
+
+#windSpeed,#windUnit,#windText{
+  font-size:3rem;
+}
+
+/*This controls the properties for the jumbotron box  where all the content is placed*/
+
+div.jumbo{
+    min-width:350px;
+    display:flex;
+    background:linear-gradient(90deg,rgba(0,0,0,.7),rgba(255,255,255,.7));
+    margin:3% 30%;
+    padding: 5%;
+    text-align: center;
+    align-items:center;
+    border-radius:1%;
+    }
+/*Controls the color of the font for all my content, see the hsl property for a reminder*/
+#appContent{
+    color:hsl(0,0%,100%);
+}
+/* For mobile phones: */
+[class*="col-"] {
+    width: 100%;
+}
+@media only screen and (min-width: 698px) {
+    /* For tablets: */
+    .col-m-1 {width: 8.33%;}
+    .col-m-2 {width: 16.66%;}
+    .col-m-3 {width: 25%;}
+    .col-m-4 {width: 33.33%;}
+    .col-m-5 {width: 41.66%;}
+    .col-m-6 {width: 50%;}
+    .col-m-7 {width: 58.33%;}
+    .col-m-8 {width: 66.66%;}
+    .col-m-9 {width: 75%;}
+    .col-m-10 {width: 83.33%;}
+    .col-m-11 {width: 91.66%;}
+    .col-m-12 {width: 100%;}
+}
+@media only screen and (min-width:768px) {
+    /* For desktop: */
+    .col-1 {width: 8.33%;}
+    .col-2 {width: 16.66%;}
+    .col-3 {width: 25%;}
+    .col-4 {width: 33.33%;}
+    .col-5 {width: 41.66%;}
+    .col-6 {width: 50%;}
+    .col-7 {width: 58.33%;}
+    .col-8 {width: 66.66%;}
+    .col-9 {width: 75%;}
+    .col-10 {width: 83.33%;}
+    .col-11 {width: 91.66%;}
+    .col-12 {width: 100%;}
+  
+  @media only screen and (min-width: 900px) {
+    /* For desktop: */
+    .col-r-1 {width: 8.33%;}
+    .col-r-2 {width: 16.66%;}
+    .col-r-3 {width: 25%;}
+    .col-r-4 {width: 33.33%;}
+    .col-r-5 {width: 41.66%;}
+    .col-r-6 {width: 50%;}
+    .col-r-7 {width: 58.33%;}
+    .col-r-8 {width: 66.66%;}
+    .col-r-9 {width: 75%;}
+    .col-r-10 {width: 83.33%;}
+    .col-r-11 {width: 91.66%;}
+    .col-r-12 {width: 100%;}
+  
+/*This section is for the toggle button for unit conversion*/
+
+/* Hide default HTML checkbox */
+    #switchTemp input{
+      display:none;
+    }
+    /* The switch - the box around the slider */
+.toggleSwitch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* The slider */
+.sliderBall {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.sliderBall:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .sliderBall {
+  background-color: #2196F3;
+}
+
+input:focus + .sliderBall {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .sliderBall:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.sliderBall {
+  border-radius: 34px;
+}
+
+.sliderBall:before {
+  border-radius: 50%;
+}
+    /*I am listing some useful properties and functions to perhaps add later:
+    
+   transform:scale();
+    
+    */
