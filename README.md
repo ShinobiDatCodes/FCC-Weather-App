@@ -42,3 +42,4 @@ A FreeCodeCamp project for a simple local weather application.
     </div>
   </div>
 </body>
+
