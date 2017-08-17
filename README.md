@@ -43,3 +43,4 @@ A FreeCodeCamp project for a simple local weather application.
   </div>
 </body>
 
+<!--Added some changes to this file in order to test the GitHub Desktop-->
