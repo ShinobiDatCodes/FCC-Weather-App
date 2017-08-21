@@ -1,0 +1,121 @@
+$(document).ready(function() {
+  /*Defines variables for first portion of code, defining standard data, independent of weather API, such as time and date*/
+  var d = new Date();
+  var hour = d.getHours();
+/*This is just to solve an aesthetic problem regarding minutes less than 10 displaying without a zero on the left.*/
+  var minutes = d.getMinutes();
+  if (minutes<10){
+    minutes="0"+minutes;
+  }
+ /*The rest of the variables continue here...*/
+  var day = d.getDay();
+  var dayWeek = "";
+  var date = d.getDate();
+  var daySup = "";
+  var timeDay = "AM";
+
+  /*First, we define the hour and get rid of the military time format due to personal preference*/
+  if (hour > 12) {
+    hour = hour - 12;
+    timeDay = "PM";
+  } else if (hour == 0) {
+    hour = 12;
+    timeDay = "AM";
+  }
+
+  /*Defines day of the week based on numbers 0-6 from New Date()*/
+  switch (day) {
+    case 0:
+      dayWeek = "Sunday";
+      break;
+    case 1:
+      dayWeek = "Monday";
+      break;
+    case 2:
+      dayWeek = "Tuesday";
+      break;
+    case 3:
+      dayWeek = "Wednesday";
+      break;
+    case 4:
+      dayWeek = "Thursday";
+      break;
+    case 5:
+      dayWeek = "Friday";
+      break;
+    case 6:
+      dayWeek = "Saturday";
+      break;
+    default:
+      document.write("Day is not valid");
+      break;
+  }
+
+  /*Gives the proper superscript to the date*/
+  if (date == 1 || date == 21 || date == 31) {
+    daySup = "st";
+  } else if (date == 2 || date == 22) {
+    daySup = "nd";
+  } else if (date == 3 || date == 23) {
+    daySup = "rd";
+  } else {
+    daySup = "th";
+  }
+
+  /*Now we can replace the placeholders for time and date. NOTE that these placeholders are only temporary for coding testing purposes*/
+  /* document.getElementById("message").innerHTML = d; erase*/
+  document.getElementById("Time").innerHTML =
+    hour + ":" + minutes + " " + timeDay;
+  document.getElementById("dayDate").innerHTML =
+    dayWeek + ", " + date + daySup.sup(); 
+
+  /*Defining variables for second portion of code*/
+  var latitude = "";
+  var longitude = "";
+  var openChrome = "https://cors-anywhere.herokuapp.com/";
+  var API_URL = "https://api.darksky.net/forecast/";
+  var keyAPI = "c1f650c2496e3eec76c3e354cd5216b4/";
+
+  /*Obtain current location of user*/
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      latitude = position.coords.latitude;
+      longitude = position.coords.longitude;
+      /*This portion is temporary, to check output of coordinates*/
+      /*$("#message2").html(
+        "latitude: " + latitude + "<br>longitude: " + longitude
+      );*/
+    });
+  }
+
+  /*We call the weather API and pull all the relevant data. Note that some local variables are defined within the function.*/
+  $("#getWeather").on("click", function() {
+  var unitFC="F";    
+    $.getJSON(
+      openChrome + API_URL + keyAPI + latitude + "," + longitude,
+      function(json) {
+        var weatherTemp = Math.round(json.currently.temperature);
+        $("#temp").html(weatherTemp+"&deg"+unitFC);
+ 
+        var weatherAppTemp = Math.round(json.currently.apparentTemperature);
+        $("#appTemp").html("Feels like:"+weatherAppTemp+"&deg"+unitFC);
+        var weatherState = json.currently.summary;
+        $("#weather").html(weatherState);
+        var windSpeed = Math.round(json.currently.windSpeed);
+        $("#windSpeed").html(windSpeed);
+      }
+    );
+  });
+$("#switchTemp").on("click", function() {
+  if(unitFC=="F"){
+    unitFC="C";
+    weatherTemp=(weatherTemp-32)/1.8;}
+  else if(unitFC=="C"){
+    unitFC="F";
+    weatherTemp=(weatherTemp*1.8)+32;
+  }
+  
+  $("#temp").html("hello");
+  
+});
+  });
